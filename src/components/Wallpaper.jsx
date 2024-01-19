@@ -9,8 +9,10 @@ const Wallpaper = () => {
     const naviagte = useNavigate();
     const [location, setLocation] = useState([]);
     const [rest, setRest] = useState([]);
+    const[locationid,setLocationid]= useState([])
     const [inputtext, setInputtext] = useState('');
     const [suggestion, setSuggestion] = useState([]);
+    const [fill,setFill]= useState([]);
     
     const fetchLocation = () => {
         axiosClient.get('/zomoto/getAllLocations')
@@ -37,9 +39,12 @@ const Wallpaper = () => {
         axiosClient.get(`/zomoto/restByLocationId/${value1}`)
             .then((res) => {
                 setLocationid(res.data);
+                console.log(locationid);
             })
         axiosClient.get(`/zomoto/restBycity/${value2}`)
-            .then((res) => setFill(res.data));  
+            .then((res) => setFill(res.data),
+            console.log(fill)
+            );  
        
     }
   
