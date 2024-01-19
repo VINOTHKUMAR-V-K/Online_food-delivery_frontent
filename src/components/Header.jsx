@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import '../styles/filter.css';
 import { useLocation } from 'react-router-dom';
 import Modal from 'react-modal';
-import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin, GoogleOAuthProvider, googleLogout } from '@react-oauth/google';
 
 // import axios from 'axios';
@@ -59,9 +58,7 @@ const Header = () => {
         setModalAnOpen(false)
     }
 
-    const responseFacebook = (response) => {
-        console.log(response);
-    }
+
 
 
     const isLoggedout = () => {
@@ -87,16 +84,16 @@ const Header = () => {
         axiosClient.post(`/zomoto/loginUser`, data)
             .then((res) => {
                 setLogin(true)
-                sessionStorage.setItem("user",res.data.user.username);
+                sessionStorage.setItem("user", res.data.user.username);
                 setLogUser(res.data.user);
                 console.log(logUser, 'login success');
                 var answer = sessionStorage.getItem("user")
                 setUsername(answer)
                 console.log(username)
-               
+
             })
             .catch(err => err, 'loginfailed')
-       
+
         ModalClose()
     }
 
@@ -130,10 +127,10 @@ const Header = () => {
 
                 <button class="btn btn-outline-danger text-white" onClick={Modalopen}>login</button>
                 <button class="btn btn-outline-danger text-white mx-2" onClick={ModalAnopen}>Create an Account</button>
-            </div>) :
+               </div>) :
                 (<div class="container-fluid head" style={{ backgroundColor: background }}>
                     <div class="box">VK</div>
-                    <img src={pic} alt="my img" height={"50px"} width={"50px"} style={{borderRadius:"50%",marginTop:"18px"}}/>
+                    <img src={pic} alt="my img" height={"50px"} width={"50px"} style={{ borderRadius: "50%", marginTop: "18px" }} />
                     <button class="btn btn-outline-danger text-white">{username}</button>
                     <button class="btn btn-outline-danger text-white mx-2" onClick={isLoggedout}>logout</button>
                 </div>)
@@ -151,15 +148,6 @@ const Header = () => {
                 <input type="password" value={pass} className='border border-3 rounded-3 shadow-lg  mb-5 bg-body' onChange={targetPass} placeholder='Enter Password' />
                 <br />
                 <button className='btn' style={{ backgroundColor: 'gray', color: 'white' }} value={username} onClick={loggedInApi} >login</button>
-                <br />
-                <FacebookLogin
-                    appId="982365532862279"
-                    fields="name,email,picture"
-                    callback={responseFacebook}
-                    icon="fa-facebook"
-                    autoLoad={false}
-                />
-
                 <br />
                 <br />
                 <div style={{ textAlign: 'center' }} className='px-5'>
