@@ -1,10 +1,8 @@
 import React,{useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export const CheckOut = (props) => {
     //rzp_test_X2J6MLpYvRxg1E-key
     //BxARInPrDSqj3WCVLH1COEiu-secret
-    let navigate=useNavigate();
     const [total,setTotal]=useState(props.amount)
      
     const handlePay=(e)=>{

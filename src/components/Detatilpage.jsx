@@ -49,7 +49,7 @@ const DetatilPage = () => {
             .then((res) => {
                 setMenu(res.data);
             })
-    }, [resturant.name])
+    }, [resturant.name,id])
 
 
     const gallaryOpen = () => {

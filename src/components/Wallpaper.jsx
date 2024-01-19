@@ -10,9 +10,7 @@ const Wallpaper = () => {
     const [location, setLocation] = useState([]);
     const [rest, setRest] = useState([]);
     const [inputtext, setInputtext] = useState('');
-    const [locationid, setLocationid] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
-    const [fill, setFill] = useState([]);
     
     const fetchLocation = () => {
         axiosClient.get('/zomoto/getAllLocations')
@@ -55,13 +53,13 @@ const Wallpaper = () => {
         naviagte(`/detail?resturant=${restObj._id}`);
     }
     const showSuggestion = () => {
-        if (suggestion.length == 0 && inputtext == undefined) {
+        if (suggestion.length === 0 && inputtext === undefined) {
             return null;
         }
-        if (suggestion.length > 0 && inputtext == '') {
+        if (suggestion.length > 0 && inputtext === '') {
             return null;
         }
-        if (suggestion.length == 0 && inputtext) {
+        if (suggestion.length === 0 && inputtext) {
             return <ul>
                 <li>No Serach Result found</li>
             </ul>
